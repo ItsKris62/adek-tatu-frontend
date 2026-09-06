@@ -1,0 +1,14 @@
+* text=auto eol=lf
+
+*.tsx text diff=typescript
+*.ts  text diff=typescript
+*.jsx text diff=javascript
+*.js  text diff=javascript
+*.css text
+*.md  text
+*.json text
+*.svg text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
