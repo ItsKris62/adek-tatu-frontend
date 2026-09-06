@@ -43,9 +43,24 @@ jobs:
           mkdir -p deploy-package/.next/static
           cp -R .next/static/* deploy-package/.next/static/
           cp -R public deploy-package/public
-          cp package.json deploy-package/package.json
-          cp pnpm-lock.yaml deploy-package/pnpm-lock.yaml
           cp next.config.mjs deploy-package/next.config.mjs 2>/dev/null || true
+
+          # Minimal production package.json for cPanel "Run NPM Install" button
+          # (no devDeps, no scripts, engines hint — npm-only friendly)
+          node -e "
+            const pkg = require('./package.json');
+            const out = {
+              name: pkg.name,
+              version: pkg.version,
+              private: true,
+              engines: { node: '>=18.18.0' },
+              dependencies: pkg.dependencies || {}
+            };
+            require('fs').writeFileSync(
+              'deploy-package/package.json',
+              JSON.stringify(out, null, 2) + '\n'
+            );
+          "
 
       - name: Upload deploy artifact
         uses: actions/upload-artifact@v4
