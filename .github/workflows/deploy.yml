@@ -1,0 +1,68 @@
+name: Deploy — Truehost (FTP)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-truehost
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build + deploy to Truehost FTP
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ vars.SITE_URL }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Next.js (standalone)
+        run: pnpm build
+
+      - name: Assemble deployable package
+        shell: bash
+        run: |
+          mkdir -p deploy-package
+          cp -R .next/standalone/* deploy-package/
+          mkdir -p deploy-package/.next/static
+          cp -R .next/static/* deploy-package/.next/static/
+          cp -R public deploy-package/public
+          cp package.json deploy-package/package.json
+          cp pnpm-lock.yaml deploy-package/pnpm-lock.yaml
+          cp next.config.mjs deploy-package/next.config.mjs 2>/dev/null || true
+
+      - name: Deploy to Truehost via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ vars.FTP_SERVER_DIR || '/' }}
+          local-dir: ./deploy-package/
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}
+          port: ${{ vars.FTP_PORT || 21 }}
+          dangerous-clean-slate: ${{ vars.FTP_CLEAN_SLATE == 'true' }}
+          log-level: standard
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.pnpm-store/**

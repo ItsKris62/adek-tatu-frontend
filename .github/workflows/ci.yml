@@ -1,0 +1,55 @@
+name: CI — Build Next.js Standalone
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build standalone artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Next.js (standalone)
+        run: pnpm build
+
+      - name: Assemble deployable package
+        shell: bash
+        run: |
+          mkdir -p deploy-package
+          cp -R .next/standalone/* deploy-package/
+          mkdir -p deploy-package/.next/static
+          cp -R .next/static/* deploy-package/.next/static/
+          cp -R public deploy-package/public
+          cp package.json deploy-package/package.json
+          cp pnpm-lock.yaml deploy-package/pnpm-lock.yaml
+          cp next.config.mjs deploy-package/next.config.mjs 2>/dev/null || true
+
+      - name: Upload deploy artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: adek-tatu-standalone
+          path: deploy-package
+          retention-days: 30
