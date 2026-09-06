@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export APP=/home/pvcpvifr/repositories/adek-tatu-frontend
+    - cd $APP && npm install --omit=dev --no-audit --no-fund
+    - cd $APP && NODE_ENV=production npm run build
