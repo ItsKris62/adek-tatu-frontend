@@ -7,7 +7,7 @@ import { site } from '@/content/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
-  description: `Contact the Alliance for Democracy and Equality in Kenya (ADEK TATU). ${site.contact.poBox}.`,
+  description: `Contact the Alliance for Democracy and Equality in Kenya (ADEK TATU). ${site.contact.officeLocation}, ${site.contact.poBox}.`,
 }
 
 export default function ContactPage() {
@@ -23,12 +23,25 @@ export default function ContactPage() {
       <section className="py-16 lg:py-24">
         <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           <div>
-            <h2 className="text-xs font-semibold tracking-[0.18em] text-adek-blue-600 uppercase">
+            <h2 className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-adek-blue-600 uppercase">
+              <span aria-hidden="true" className="h-0.5 w-5 rounded-full bg-gold" />
               Official Contact
             </h2>
             <address className="mt-6 flex flex-col gap-5 not-italic">
               <div className="flex items-start gap-3">
-                <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-lg border border-navy/10 bg-secondary text-navy">
+                <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-lg border border-navy/10 bg-secondary text-gold">
+                  <MapPin className="size-5" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">Office Location</p>
+                  <p className="text-base font-semibold text-navy">
+                    {site.contact.officeLocation}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-lg border border-navy/10 bg-secondary text-gold">
                   <MapPin className="size-5" aria-hidden="true" />
                 </span>
                 <div>

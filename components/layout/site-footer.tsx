@@ -7,7 +7,7 @@ import { site } from '@/content/site'
 
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-navy-700/40 bg-navy text-white/80">
+    <footer className="relative mt-24 border-t border-navy-700/40 bg-navy text-white/80 before:absolute before:inset-x-0 before:top-0 before:h-[2px] before:bg-gradient-to-r before:from-transparent before:via-gold/70 before:to-transparent">
       <Container className="py-14 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_2fr]">
           {/* Identity + contact */}
@@ -36,16 +36,19 @@ export function SiteFooter() {
 
             <address className="mt-6 flex flex-col gap-3 text-sm not-italic">
               <span className="flex items-start gap-2.5 text-white/80">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-adek-blue" aria-hidden="true" />
-                {site.contact.poBox}
+                <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
+                <span className="flex flex-col">
+                  <span className="text-white">{site.contact.officeLocation}</span>
+                  <span className="text-xs text-white/60">{site.contact.poBox}</span>
+                </span>
               </span>
               {site.contact.phones.map((phone) => (
                 <a
                   key={phone}
                   href={`tel:${phone.replace(/\s/g, '')}`}
-                  className="flex items-center gap-2.5 text-white/80 transition-colors hover:text-white"
+                  className="flex items-center gap-2.5 text-white/80 transition-colors hover:text-gold"
                 >
-                  <Phone className="size-4 shrink-0 text-adek-blue" aria-hidden="true" />
+                  <Phone className="size-4 shrink-0 text-gold" aria-hidden="true" />
                   {phone}
                 </a>
               ))}
@@ -64,7 +67,7 @@ export function SiteFooter() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="text-sm text-white/75 transition-colors hover:text-adek-blue focus-visible:text-adek-blue focus-visible:outline-none"
+                        className="text-sm text-white/75 transition-colors duration-200 hover:text-gold focus-visible:text-gold focus-visible:outline-none"
                       >
                         {link.label}
                       </Link>

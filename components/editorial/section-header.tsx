@@ -26,7 +26,7 @@ export function SectionHeader({
     >
       {eyebrow ? (
         <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-adek-blue-600 uppercase">
-          <span aria-hidden="true" className="h-px w-6 bg-adek-blue/50" />
+          <span aria-hidden="true" className="h-0.5 w-6 rounded-full bg-gold" />
           {eyebrow}
         </span>
       ) : null}

@@ -8,14 +8,15 @@ export function JoinCTA() {
         <div className="relative overflow-hidden rounded-2xl bg-navy px-6 py-12 text-white sm:px-12 sm:py-16">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-24 -right-16 size-[360px] rounded-full border border-white/[0.08]"
+            className="pointer-events-none absolute -top-24 -right-16 size-[360px] rounded-full border border-gold/20"
           />
           <div
             aria-hidden="true"
             className="pointer-events-none absolute top-10 -right-24 size-[280px] rounded-full border border-white/[0.06]"
           />
           <div className="relative max-w-2xl">
-            <span className="text-xs font-semibold tracking-[0.18em] text-adek-blue uppercase">
+            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-gold uppercase">
+              <span aria-hidden="true" className="h-0.5 w-5 rounded-full bg-gold" />
               Participate
             </span>
             <h2 className="mt-4 text-balance text-3xl leading-tight font-bold sm:text-4xl">

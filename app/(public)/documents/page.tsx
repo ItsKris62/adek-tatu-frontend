@@ -6,7 +6,7 @@ import { DocumentLibrary } from '@/components/documents/document-library'
 export const metadata: Metadata = {
   title: 'Official Documents',
   description:
-    'The ADEK document library — party constitution, party rules, draft manifesto and membership form. Availability reflects each document\u2019s current status.',
+    'The ADEK document library — party constitution & rules, draft manifesto and membership form. Availability reflects each document\u2019s current status.',
 }
 
 export default function DocumentsPage() {

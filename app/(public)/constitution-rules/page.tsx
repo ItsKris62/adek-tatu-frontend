@@ -7,7 +7,7 @@ import { SectionHeader } from '@/components/editorial/section-header'
 export const metadata: Metadata = {
   title: 'Constitution & Rules',
   description:
-    'Access to the ADEK party constitution and party rules. Both documents are pending client input.',
+    'Access to the combined ADEK party constitution and internal rules document. Pending client input.',
 }
 
 export default function ConstitutionRulesPage() {
@@ -15,8 +15,8 @@ export default function ConstitutionRulesPage() {
     <>
       <PageHero
         eyebrow="Governance"
-        title="Constitution & Rules"
-        lead="The official documents that govern how ADEK is organised and run. Both will be published here once supplied and approved."
+        title="Party Constitution & Rules"
+        lead="The official governing document combining the constitution and internal rules of ADEK. Will be published here once supplied and approved."
         breadcrumbs={[
           { label: 'Home', href: '/' },
           { label: 'Constitution & Rules' },
@@ -26,20 +26,11 @@ export default function ConstitutionRulesPage() {
       <section className="py-16 lg:py-24">
         <Container className="grid gap-12 lg:gap-16">
           <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
-            <SectionHeader eyebrow="Document" title="Party Constitution" />
-            {/* PENDING CLIENT INPUT: constitution text. Do not summarise or invent. */}
-            <PendingNotice title="Party Constitution — Pending Client Input">
-              The official constitution will be made available here once the
-              approved document has been supplied.
-            </PendingNotice>
-          </div>
-
-          <div className="grid gap-8 border-t border-border pt-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
-            <SectionHeader eyebrow="Document" title="Party Rules" />
-            {/* PENDING CLIENT INPUT: party rules text. Do not summarise or invent. */}
-            <PendingNotice title="Party Rules — Pending Client Input">
-              The internal party rules will be made available here once the
-              approved document has been supplied.
+            <SectionHeader eyebrow="Governing Document" title="Party Constitution & Rules" />
+            {/* PENDING CLIENT INPUT: combined constitution and rules text. Do not summarise or invent. */}
+            <PendingNotice title="Party Constitution & Rules — Pending Client Input">
+              The official combined constitution and rules document will be made
+              available here once the approved file has been supplied.
             </PendingNotice>
           </div>
         </Container>

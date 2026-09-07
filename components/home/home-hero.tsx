@@ -8,14 +8,14 @@ export function HomeHero() {
     <section className="relative overflow-hidden bg-offwhite">
       {/* Emblem-inspired concentric arcs, anchored right */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 right-[8%] size-[640px] rounded-full border border-navy/[0.06]" />
+        <div className="absolute -top-32 right-[8%] size-[640px] rounded-full border border-gold/15" />
         <div className="absolute -top-10 right-[16%] size-[440px] rounded-full border border-navy/[0.05]" />
       </div>
 
       <Container className="relative grid items-center gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
         <div>
           <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.18em] text-adek-blue-600 uppercase">
-            <span aria-hidden="true" className="h-px w-6 bg-adek-blue/50" />
+            <span aria-hidden="true" className="h-0.5 w-6 rounded-full bg-gold" />
             Official Website of ADEK
           </span>
 

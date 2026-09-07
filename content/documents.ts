@@ -14,18 +14,12 @@ export type OfficialDocument = {
  */
 export const officialDocuments: OfficialDocument[] = [
   {
-    title: 'Party Constitution',
+    title: 'Party Constitution & Rules',
     type: 'Governing Document',
     status: 'PENDING_CLIENT_INPUT',
+    href: '/constitution-rules',
     summary:
-      'The official constitution of ADEK. Will be published once supplied and approved.',
-  },
-  {
-    title: 'Party Rules',
-    type: 'Governing Document',
-    status: 'PENDING_CLIENT_INPUT',
-    summary:
-      'Internal party rules and procedures. Will be published once supplied and approved.',
+      'The official constitution and internal governing rules of ADEK combined in one governing document. Will be published once supplied and approved.',
   },
   {
     title: 'Draft Manifesto',

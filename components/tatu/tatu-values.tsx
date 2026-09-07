@@ -42,8 +42,8 @@ export function TatuValues() {
                 y1="50"
                 x2={t.x}
                 y2={t.y}
-                stroke={i === active ? 'var(--adek-blue)' : 'var(--border)'}
-                strokeWidth={i === active ? '0.8' : '0.4'}
+                stroke={i === active ? 'var(--gold)' : 'var(--border)'}
+                strokeWidth={i === active ? '1' : '0.4'}
                 className="transition-all duration-300"
               />
             ))}
@@ -51,7 +51,7 @@ export function TatuValues() {
 
           {/* Center */}
           <div className="absolute left-1/2 top-1/2 flex aspect-square w-[46%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border border-navy/10 bg-background p-6 text-center shadow-[0_20px_50px_-30px_rgba(8,47,103,0.4)]">
-            <span className="font-display text-xs font-bold tracking-[0.4em] text-adek-blue-600">
+            <span className="font-display text-xs font-bold tracking-[0.4em] text-gold-600">
               TATU
             </span>
             <p className="mt-2 font-display text-xl font-bold text-navy">
@@ -76,19 +76,24 @@ export function TatuValues() {
                 aria-label={`${value.title}: ${value.description}`}
                 style={nodePositions[i]}
                 className={cn(
-                  'absolute flex size-[86px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border text-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-2',
+                  'absolute flex size-[86px] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full border text-center transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2',
                   isActive
-                    ? 'border-transparent bg-navy text-white shadow-[0_16px_30px_-14px_rgba(8,47,103,0.6)]'
-                    : 'border-border bg-background text-navy hover:border-adek-blue/50 hover:text-adek-blue',
+                    ? 'border-gold/50 bg-navy text-white ring-2 ring-gold/30 shadow-[0_16px_30px_-14px_rgba(245,168,0,0.45)]'
+                    : 'border-border bg-background text-navy hover:border-gold/40 hover:text-navy',
                 )}
               >
-                <span className="font-display text-lg font-extrabold">
+                <span
+                  className={cn(
+                    'font-display text-lg font-extrabold',
+                    isActive ? 'text-gold' : 'text-navy',
+                  )}
+                >
                   {value.letter}
                 </span>
                 <span
                   className={cn(
                     'mt-0.5 text-[10px] font-semibold tracking-wide uppercase',
-                    isActive ? 'text-white/80' : 'text-muted-foreground',
+                    isActive ? 'text-white/90' : 'text-muted-foreground',
                   )}
                 >
                   {value.title}
@@ -107,7 +112,7 @@ export function TatuValues() {
         />
         {tatuValues.map((value) => (
           <li key={value.title} className="relative flex gap-4 pb-8 last:pb-0">
-            <span className="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border border-navy/10 bg-navy font-display text-lg font-extrabold text-white">
+            <span className="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-navy font-display text-lg font-extrabold text-gold shadow-sm">
               {value.letter}
             </span>
             <div className="pt-1.5">

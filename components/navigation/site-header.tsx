@@ -58,16 +58,22 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Utility bar */}
-      <div className="hidden bg-navy text-white/85 lg:block">
+      <div className="hidden border-b border-navy-700/40 bg-navy text-white/85 lg:block">
         <Container className="flex h-9 items-center justify-between text-[12.5px]">
-          <p className="tracking-wide">Official Website of ADEK</p>
+          <p className="flex items-center gap-2 tracking-wide text-white/90">
+            <span
+              aria-hidden="true"
+              className="inline-block size-1.5 rounded-full bg-gold shadow-[0_0_8px_rgba(245,168,0,0.85)]"
+            />
+            Official Website of ADEK
+          </p>
           <nav aria-label="Utility">
             <ul className="flex items-center gap-6">
               {utilityNav.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-white/75 transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none"
+                    className="text-white/75 transition-colors duration-200 hover:text-gold focus-visible:text-gold focus-visible:outline-none"
                   >
                     {link.label}
                   </Link>
@@ -98,20 +104,24 @@ export function SiteHeader() {
                       href={link.href}
                       aria-current={active ? 'page' : undefined}
                       className={cn(
-                        'relative inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition-colors',
+                        'group relative inline-flex h-9 items-center rounded-md px-3 text-sm font-medium transition-colors duration-200',
                         active
-                          ? 'text-navy'
-                          : 'text-foreground/70 hover:text-adek-blue',
+                          ? 'font-semibold text-navy'
+                          : 'text-foreground/75 hover:text-navy',
                       )}
                     >
                       {link.label}
-                      <span
-                        aria-hidden="true"
-                        className={cn(
-                          'absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-adek-blue transition-transform duration-300 ease-out',
-                          active ? 'scale-x-100' : 'scale-x-0',
-                        )}
-                      />
+                      {active ? (
+                        <span
+                          aria-hidden="true"
+                          className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gold shadow-[0_1px_8px_rgba(245,168,0,0.45)]"
+                        />
+                      ) : (
+                        <span
+                          aria-hidden="true"
+                          className="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-gold transition-transform duration-300 ease-out group-hover:scale-x-100"
+                        />
+                      )}
                     </Link>
                   </li>
                 )
@@ -126,7 +136,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setOpen(true)}
-              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-navy transition-colors hover:border-navy/40 hover:text-adek-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-2 lg:hidden"
+              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-navy transition-colors hover:border-gold hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 lg:hidden"
               aria-label="Open menu"
               aria-expanded={open}
               aria-controls="mobile-navigation"
@@ -168,7 +178,7 @@ export function SiteHeader() {
               ref={closeRef}
               type="button"
               onClick={() => setOpen(false)}
-              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-navy transition-colors hover:border-navy/40 hover:text-adek-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-2"
+              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-navy transition-colors hover:border-gold hover:text-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
               aria-label="Close menu"
             >
               <X className="size-5" aria-hidden="true" />
@@ -179,7 +189,7 @@ export function SiteHeader() {
             aria-label="Mobile primary"
             className="flex-1 overflow-y-auto px-3 py-4"
           >
-            <ul className="flex flex-col">
+            <ul className="flex flex-col gap-1">
               {mobileNav.map((link) => {
                 const active = isActive(pathname, link.href)
                 return (
@@ -188,10 +198,10 @@ export function SiteHeader() {
                       href={link.href}
                       aria-current={active ? 'page' : undefined}
                       className={cn(
-                        'flex min-h-12 items-center rounded-lg px-3 text-base font-semibold transition-colors',
+                        'flex min-h-12 items-center rounded-lg px-3 text-base font-semibold transition-all duration-200',
                         active
-                          ? 'bg-secondary text-navy'
-                          : 'text-foreground hover:bg-muted hover:text-adek-blue',
+                          ? 'border-l-[3px] border-gold bg-gold-soft/80 text-navy'
+                          : 'text-foreground hover:bg-muted hover:text-navy',
                       )}
                     >
                       {link.label}
@@ -204,7 +214,7 @@ export function SiteHeader() {
             <p className="px-3 pt-6 pb-2 text-[11px] font-semibold tracking-[0.16em] text-muted-foreground uppercase">
               More
             </p>
-            <ul className="flex flex-col">
+            <ul className="flex flex-col gap-1">
               {mobileSecondaryNav.map((link) => {
                 const active = isActive(pathname, link.href)
                 return (
@@ -215,7 +225,7 @@ export function SiteHeader() {
                       className={cn(
                         'flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors',
                         active
-                          ? 'text-navy'
+                          ? 'border-l-[3px] border-gold bg-gold-soft/80 font-medium text-navy'
                           : 'text-muted-foreground hover:bg-muted hover:text-navy',
                       )}
                     >

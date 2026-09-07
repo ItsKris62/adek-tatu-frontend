@@ -124,6 +124,10 @@
     font-family: var(--font-display);
     letter-spacing: -0.02em;
   }
+  ::selection {
+    background-color: var(--gold-soft);
+    color: var(--navy);
+  }
 }
 
 /* Reveal-on-scroll: hidden by default, revealed via .is-visible */
@@ -143,13 +147,13 @@
 
 /* Editorial link underline that grows from the left */
 .link-underline {
-  background-image: linear-gradient(var(--adek-blue), var(--adek-blue));
+  background-image: linear-gradient(to right, var(--gold), var(--gold-600));
   background-position: 0 100%;
   background-repeat: no-repeat;
-  background-size: 0% 1.5px;
+  background-size: 0% 2px;
   transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .link-underline:hover,
 .link-underline:focus-visible {
-  background-size: 100% 1.5px;
+  background-size: 100% 2px;
 }

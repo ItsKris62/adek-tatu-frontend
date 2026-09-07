@@ -17,18 +17,18 @@ export function ManifestoRow({
   return (
     <Link
       href={`/manifesto/${slug}`}
-      className="group flex gap-4 border-t border-border py-6 transition-colors first:border-t-0 hover:border-adek-blue/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-4 sm:gap-6"
+      className="group flex gap-4 border-t border-border py-6 transition-colors first:border-t-0 hover:border-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-4 sm:gap-6"
     >
-      <span className="font-display text-2xl font-bold text-border transition-colors group-hover:text-adek-blue">
+      <span className="font-display text-2xl font-bold text-border transition-colors duration-200 group-hover:text-gold">
         {number}
       </span>
       <div className="flex-1">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-balance text-lg font-bold text-navy transition-colors group-hover:text-adek-blue sm:text-xl">
+          <h3 className="text-balance text-lg font-bold text-navy transition-colors group-hover:text-navy sm:text-xl">
             {title}
           </h3>
           <ArrowUpRight
-            className="mt-1 size-5 shrink-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-adek-blue"
+            className="mt-1 size-5 shrink-0 text-muted-foreground transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold-600"
             aria-hidden="true"
           />
         </div>
