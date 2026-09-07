@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Breadcrumbs } from '@/components/editorial/breadcrumbs'
-import { ImagePlaceholder } from '@/components/editorial/image-placeholder'
+import Image from 'next/image'
 import {
   manifestoPillars,
   getPillar,
@@ -76,14 +76,23 @@ export default async function ManifestoPillarPage({
           </div>
 
           <aside className="lg:pt-1">
-            <ImagePlaceholder
-              ratio="3/2"
-              label="Policy Illustration"
-              note="Pending client asset"
-            />
-            <p className="mt-4 text-sm text-muted-foreground">
-              Pillar {pillar.number} of {manifestoPillars.length} in the ADEK
-              policy framework.
+            <div className="relative aspect-3/2 w-full overflow-hidden rounded-2xl border border-border/80 bg-slate-100 shadow-sm">
+              <Image
+                src="/images/policy-pillar.jpg"
+                alt={pillar.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 360px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-navy/60 via-transparent to-transparent" />
+              <div className="absolute bottom-3 left-3">
+                <span className="inline-flex items-center rounded-md bg-gold/90 px-2 py-0.5 text-[11px] font-semibold tracking-wider text-navy uppercase shadow-xs">
+                  Pillar {pillar.number}
+                </span>
+              </div>
+            </div>
+            <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              Strategic policy pillar of the ADEK 10-point national framework.
             </p>
           </aside>
         </Container>

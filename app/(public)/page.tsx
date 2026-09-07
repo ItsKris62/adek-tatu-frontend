@@ -166,9 +166,9 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={100} className="mt-12">
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              <NewsCard />
-              <NewsCard />
-              <NewsCard />
+              <NewsCard index={0} />
+              <NewsCard index={1} />
+              <NewsCard index={2} />
             </div>
           </Reveal>
         </Container>

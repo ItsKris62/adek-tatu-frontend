@@ -1,6 +1,6 @@
+import Image from 'next/image'
 import { Container } from '@/components/layout/container'
 import { CtaLink } from '@/components/editorial/cta'
-import { ImagePlaceholder } from '@/components/editorial/image-placeholder'
 import { site } from '@/content/site'
 
 export function HomeHero() {
@@ -43,13 +43,25 @@ export function HomeHero() {
           </div>
         </div>
 
-        <div className="relative">
-          <ImagePlaceholder
-            ratio="4/5"
-            label="Official ADEK Photography"
-            note="Hero image · pending client asset"
-            className="mx-auto max-w-[440px]"
-          />
+        <div className="relative mx-auto w-full max-w-[440px]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-navy/10 bg-muted shadow-[0_24px_50px_-20px_rgba(8,47,103,0.25)]">
+            <Image
+              src="/images/hero-community.jpg"
+              alt="ADEK Community and Leadership gathering"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 440px"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy/80 via-navy/30 to-transparent p-5 text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-2.5 py-0.5 text-[10px] font-bold tracking-wider text-navy uppercase">
+                Community & Unity
+              </span>
+              <p className="mt-1.5 text-xs text-white/90">
+                Umoja Wetu, Nguvu Yetu — Moving Kenya Forward Together
+              </p>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

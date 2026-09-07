@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Container } from '@/components/layout/container'
 import { Breadcrumbs } from '@/components/editorial/breadcrumbs'
-import { ImagePlaceholder } from '@/components/editorial/image-placeholder'
+import Image from 'next/image'
 import { PendingNotice } from '@/components/editorial/pending-notice'
 import { NewsCard } from '@/components/news/news-card'
 
@@ -47,8 +47,14 @@ export default async function NewsArticlePage({
           </span>
         </header>
 
-        <div className="mt-8">
-          <ImagePlaceholder ratio="16/9" label="Featured Image" note="Pending client input" />
+        <div className="mt-8 relative aspect-video w-full overflow-hidden rounded-2xl border border-border/80 bg-slate-100 shadow-sm">
+          <Image
+            src="/images/news-1.jpg"
+            alt="News article preview"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
         </div>
 
         <div className="mt-10">
