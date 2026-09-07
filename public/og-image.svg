@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="ogBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5A800"/>
+      <stop offset="100%" stop-color="#FFC733"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="38" fill="url(#ogBg)"/>
+  <g fill="#0F3E95">
+    <path d="M126.4 95.63 100.43 70.75a3.37 3.37 0 0 0-2.25-.9H85.88v57.15h7.87v-31.93l19.88 21.44a3.38 3.38 0 0 0 2.48 1.06h5.74l14.55-21.94Z"/>
+    <path d="M72 127.13 37.13 84.75h4.49l27.88 34.9a2.36 2.36 0 0 0 4-1.46V84.75h9.68v43.19c0 8.8-8.79 12.49-14.16-.81Z"/>
+  </g>
+  <g transform="translate(26 120)" font-family="Manrope, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" fill="#FFFFFF">
+    <text x="0" y="0" font-size="30" font-weight="900" letter-spacing="2">ADEK TATU</text>
+  </g>
+</svg>
