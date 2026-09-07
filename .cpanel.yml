@@ -1,6 +1,20 @@
 ---
 deployment:
   tasks:
-    - export APP=/home/pvcpvifr/repositories/adek-tatu-frontend
-    - cd $APP && npm install --omit=dev --no-audit --no-fund
-    - cd $APP && NODE_ENV=production npm run build
+    # 1. Define Deployment Paths & Ensure Node.js 20+ PATH availability on cPanel
+    - export DEPLOYPATH=/home/pvcpvifr/repositories/adek-tatu-frontend
+    - export PATH=/opt/cpanel/ea-nodejs20/bin:/usr/local/bin:/usr/bin:/bin:$PATH
+
+    # 2. Copy files to deployment root
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R * $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/tmp
+
+    # 3. Install dependencies (Next.js build requires devDependencies for TypeScript & Tailwind)
+    - cd $DEPLOYPATH && npm install --no-audit --no-fund
+
+    # 4. Build Next.js production bundle
+    - cd $DEPLOYPATH && NODE_ENV=production npm run build
+
+    # 5. Restart Phusion Passenger / cPanel Node.js Application instance
+    - /bin/touch $DEPLOYPATH/tmp/restart.txt
