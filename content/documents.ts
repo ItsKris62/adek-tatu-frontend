@@ -18,10 +18,12 @@ export const officialDocuments: OfficialDocument[] = [
   {
     title: 'Party Constitution & Rules',
     type: 'Governing Document',
-    status: 'PENDING_CLIENT_INPUT',
+    status: 'APPROVED',
     href: '/constitution-rules',
+    fileUrl: '/documents/ADEK%20TATU%20PARTY%20CONSTITUTION.pdf',
+    downloadName: 'ADEK TATU PARTY CONSTITUTION.pdf',
     summary:
-      'The official constitution and internal governing rules of ADEK combined in one governing document. Will be published once supplied and approved.',
+      'The official constitution and internal governing rules of ADEK TATU combined in one governing document.',
   },
   {
     title: 'Party Manifesto',
@@ -31,7 +33,7 @@ export const officialDocuments: OfficialDocument[] = [
     fileUrl: '/documents/Party%20Manifesto%20ADEK%20TATU.pdf',
     downloadName: 'Party Manifesto ADEK TATU.pdf',
     summary:
-      'The official party manifesto organising ADEK TATU draft policy priorities for Kenya.',
+      'The official party manifesto organising ADEK TATU policy priorities for Kenya.',
   },
   {
     title: 'ADEK TATU Core Values',

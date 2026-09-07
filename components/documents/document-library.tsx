@@ -40,12 +40,12 @@ function DocumentRow({ doc }: { doc: OfficialDocument }) {
           </a>
         ) : null}
 
-        {available && doc.href && !doc.fileUrl ? (
+        {available && doc.href ? (
           <Link
             href={doc.href}
             className="group inline-flex h-10 items-center gap-2 rounded-[10px] border border-navy/25 px-4 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-navy hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-2"
           >
-            View
+            Read online
             <ArrowRight
               className="size-4 transition-transform group-hover:translate-x-0.5"
               aria-hidden="true"
