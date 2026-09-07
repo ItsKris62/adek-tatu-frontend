@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FileText, ArrowRight, Lock } from 'lucide-react'
+import { FileText, ArrowRight, Download, Lock } from 'lucide-react'
 import { ContentStatusBadge } from '@/components/editorial/content-status-badge'
 import {
   officialDocuments,
@@ -26,8 +26,21 @@ function DocumentRow({ doc }: { doc: OfficialDocument }) {
         </div>
       </div>
 
-      <div className="shrink-0 sm:pl-4">
-        {available && doc.href ? (
+      <div className="flex flex-wrap items-center gap-2 shrink-0 sm:pl-4">
+        {available && doc.fileUrl ? (
+          <a
+            href={doc.fileUrl}
+            download={doc.downloadName}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex h-10 items-center gap-2 rounded-[10px] bg-gold px-4 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+          >
+            <Download className="size-4" aria-hidden="true" />
+            Download PDF
+          </a>
+        ) : null}
+
+        {available && doc.href && !doc.fileUrl ? (
           <Link
             href={doc.href}
             className="group inline-flex h-10 items-center gap-2 rounded-[10px] border border-navy/25 px-4 text-sm font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:border-navy hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-2"
@@ -38,7 +51,9 @@ function DocumentRow({ doc }: { doc: OfficialDocument }) {
               aria-hidden="true"
             />
           </Link>
-        ) : (
+        ) : null}
+
+        {!available ? (
           <span
             className="inline-flex h-10 items-center gap-2 rounded-[10px] border border-dashed border-border px-4 text-sm font-medium text-muted-foreground"
             title="This document is not yet available."
@@ -46,7 +61,7 @@ function DocumentRow({ doc }: { doc: OfficialDocument }) {
             <Lock className="size-4" aria-hidden="true" />
             Not yet available
           </span>
-        )}
+        ) : null}
       </div>
     </div>
   )

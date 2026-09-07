@@ -5,12 +5,14 @@ export type OfficialDocument = {
   type: string
   status: ContentStatus
   href?: string
+  fileUrl?: string
+  downloadName?: string
   summary: string
 }
 
 /**
- * Do NOT fabricate file sizes, upload dates, revision numbers or PDF URLs.
- * Availability is derived from status only.
+ * Official ADEK Documents.
+ * Downloadable PDF files are located in /documents/
  */
 export const officialDocuments: OfficialDocument[] = [
   {
@@ -22,12 +24,24 @@ export const officialDocuments: OfficialDocument[] = [
       'The official constitution and internal governing rules of ADEK combined in one governing document. Will be published once supplied and approved.',
   },
   {
-    title: 'Draft Manifesto',
+    title: 'Party Manifesto',
     type: 'Policy Framework',
-    status: 'DRAFT',
+    status: 'APPROVED',
     href: '/manifesto',
+    fileUrl: '/documents/Party%20Manifesto%20ADEK%20TATU.pdf',
+    downloadName: 'Party Manifesto ADEK TATU.pdf',
     summary:
-      'The draft policy framework organised into ten pillars. Pending final approval.',
+      'The official party manifesto organising ADEK TATU draft policy priorities for Kenya.',
+  },
+  {
+    title: 'ADEK TATU Core Values',
+    type: 'Core Principles',
+    status: 'APPROVED',
+    href: '/tatu-values',
+    fileUrl: '/documents/ADEK%20TATU%20CORE%20VALUE.pdf',
+    downloadName: 'ADEK TATU CORE VALUE.pdf',
+    summary:
+      'The official core values document outlining Teamwork, Accountability, Transparency and Unity (TATU).',
   },
   {
     title: 'Membership Form',

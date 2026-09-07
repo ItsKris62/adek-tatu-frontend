@@ -5,10 +5,12 @@ import { TatuValues } from '@/components/tatu/tatu-values'
 import { RelatedLinks } from '@/components/editorial/related-links'
 import { tatuValues } from '@/content/values'
 
+import { Download } from 'lucide-react'
+
 export const metadata: Metadata = {
   title: 'TATU Values',
   description:
-    'TATU is the ADEK values system: Teamwork, Accountability, Transparency and Unity.',
+    'TATU is the ADEK values system: Teamwork, Accountability, Transparency and Unity. Download the official core values document.',
 }
 
 export default function TatuValuesPage() {
@@ -19,7 +21,20 @@ export default function TatuValuesPage() {
         title="TATU"
         lead="Teamwork, Accountability, Transparency and Unity — the four commitments at the heart of ADEK."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'TATU Values' }]}
-      />
+      >
+        <div className="mt-2">
+          <a
+            href="/documents/ADEK%20TATU%20CORE%20VALUE.pdf"
+            download="ADEK TATU CORE VALUE.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 items-center gap-2 rounded-[10px] bg-gold px-4 text-xs font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            <Download className="size-3.5" aria-hidden="true" />
+            Download Core Values PDF
+          </a>
+        </div>
+      </PageHero>
 
       {/* Interactive TATU system */}
       <section className="py-16 lg:py-24">

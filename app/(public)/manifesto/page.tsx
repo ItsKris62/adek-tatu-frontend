@@ -6,10 +6,12 @@ import { ContentStatusBadge } from '@/components/editorial/content-status-badge'
 import { JoinCTA } from '@/components/editorial/join-cta'
 import { manifestoPillars } from '@/content/manifesto'
 
+import { Download } from 'lucide-react'
+
 export const metadata: Metadata = {
-  title: 'Draft Manifesto & Policy Framework',
+  title: 'Manifesto & Policy Framework',
   description:
-    'The ADEK draft manifesto is organised into ten policy pillars. Draft — pending final approval.',
+    'The ADEK party manifesto is organised into ten policy pillars. Download the official PDF or browse online.',
 }
 
 export default function ManifestoPage() {
@@ -17,11 +19,23 @@ export default function ManifestoPage() {
     <>
       <PageHero
         eyebrow="Policy"
-        title="Draft Manifesto & Policy Framework"
-        lead="Our draft priorities for Kenya, organised into ten policy pillars. This document is a draft and has not yet been finally approved."
+        title="Party Manifesto & Policy Framework"
+        lead="Our draft priorities for Kenya, organised into ten policy pillars. You can download the complete document or browse each pillar below."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Manifesto' }]}
       >
-        <ContentStatusBadge status="DRAFT" label="Draft — Pending Final Approval" />
+        <div className="flex flex-wrap items-center gap-3">
+          <ContentStatusBadge status="APPROVED" label="Official Document" />
+          <a
+            href="/documents/Party%20Manifesto%20ADEK%20TATU.pdf"
+            download="Party Manifesto ADEK TATU.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 items-center gap-2 rounded-[10px] bg-gold px-4 text-xs font-semibold text-navy transition-all duration-200 hover:-translate-y-0.5 hover:bg-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+          >
+            <Download className="size-3.5" aria-hidden="true" />
+            Download Manifesto PDF
+          </a>
+        </div>
       </PageHero>
 
       <section className="py-16 lg:py-24">
