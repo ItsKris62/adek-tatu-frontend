@@ -9,12 +9,14 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-/**
- * Submission confirmation. The reference is intentionally generated client-side
- * for this frontend prototype; a production backend should issue the authoritative
- * reference and persist the registration securely.
- */
-export default function ConfirmationPage() {
+export default async function ConfirmationPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ ref?: string }>
+}) {
+  const params = await searchParams
+  const reference = params.ref
+
   return (
     <section className="py-20 lg:py-28">
       <Container className="max-w-2xl text-center">
@@ -29,16 +31,16 @@ export default function ConfirmationPage() {
         </p>
 
         <dl className="mx-auto mt-10 max-w-md space-y-3 text-left">
-          <div className="flex items-center justify-between rounded-lg border border-dashed border-border bg-offwhite px-4 py-3">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-offwhite px-4 py-3">
             <dt className="text-sm text-muted-foreground">Application reference</dt>
-            <dd className="text-sm font-medium text-muted-foreground">
-              Will appear here
+            <dd className="font-mono text-sm font-bold text-navy">
+              {reference || 'Reference issued on submission'}
             </dd>
           </div>
-          <div className="flex items-center justify-between rounded-lg border border-dashed border-border bg-offwhite px-4 py-3">
+          <div className="flex items-center justify-between rounded-lg border border-border bg-offwhite px-4 py-3">
             <dt className="text-sm text-muted-foreground">Status</dt>
             <dd className="text-sm font-medium text-navy">
-              Pending verification
+              Submitted / Pending verification
             </dd>
           </div>
         </dl>

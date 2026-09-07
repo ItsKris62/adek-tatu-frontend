@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState, type ReactNode } from 'react'
 import {
   LayoutDashboard,
@@ -17,9 +17,11 @@ import {
   X,
   ExternalLink,
   ChevronRight,
+  LogOut,
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { roleLabels, type AdminRole } from '@/content/admin'
+import { getMe, logoutAdmin, type AdminUserSession } from '@/lib/api/adminAuth'
 
 const navItems = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -38,8 +40,16 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`)
 }
 
-function SidebarContent({ role }: { role: AdminRole }) {
+function SidebarContent({
+  user,
+  onLogout,
+}: {
+  user: AdminUserSession | null
+  onLogout: () => void
+}) {
   const pathname = usePathname()
+  const displayRole = user?.role || 'SUPER_ADMIN'
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-5">
@@ -79,17 +89,28 @@ function SidebarContent({ role }: { role: AdminRole }) {
       </nav>
 
       <div className="border-t border-sidebar-border p-3">
-        {/* Demo role indicator — role-based navigation here is illustrative only. */}
         <div className="rounded-lg bg-white/5 p-3">
           <p className="text-[10px] font-semibold tracking-[0.14em] text-sidebar-foreground/50 uppercase">
-            Signed in as (demo)
+            Signed in as
           </p>
-          <p className="mt-1 text-sm font-semibold text-white">Administrator DEMO-01</p>
-          <p className="text-xs text-adek-blue">{roleLabels[role]}</p>
+          <p className="mt-1 truncate text-sm font-semibold text-white">
+            {user?.email || 'Administrator'}
+          </p>
+          <p className="text-xs text-adek-blue">{roleLabels[displayRole]}</p>
         </div>
+
+        <button
+          type="button"
+          onClick={onLogout}
+          className="mt-2 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-sidebar-foreground/70 transition-colors hover:bg-white/5 hover:text-white"
+        >
+          <LogOut className="size-4" aria-hidden="true" />
+          Sign out
+        </button>
+
         <Link
           href="/"
-          className="mt-2 flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-sidebar-foreground/70 transition-colors hover:bg-white/5 hover:text-white"
+          className="mt-1 flex items-center gap-2 rounded-lg px-3 py-2 text-sm text-sidebar-foreground/70 transition-colors hover:bg-white/5 hover:text-white"
         >
           <ExternalLink className="size-4" aria-hidden="true" />
           View public site
@@ -104,7 +125,6 @@ export function AdminShell({
   breadcrumbs,
   actions,
   children,
-  role = 'SUPER_ADMIN',
 }: {
   title: string
   breadcrumbs?: { label: string; href?: string }[]
@@ -113,7 +133,33 @@ export function AdminShell({
   role?: AdminRole
 }) {
   const pathname = usePathname()
+  const router = useRouter()
   const [open, setOpen] = useState(false)
+  const [currentUser, setCurrentUser] = useState<AdminUserSession | null>(null)
+
+  useEffect(() => {
+    let mounted = true
+    getMe()
+      .then((session) => {
+        if (mounted) setCurrentUser(session)
+      })
+      .catch(() => {
+        // Not authenticated, redirect to login
+        router.push('/admin/login')
+      })
+
+    return () => {
+      mounted = false
+    }
+  }, [router])
+
+  async function handleLogout() {
+    try {
+      await logoutAdmin()
+    } finally {
+      router.push('/admin/login')
+    }
+  }
 
   useEffect(() => {
     setOpen(false)
@@ -135,7 +181,7 @@ export function AdminShell({
     <div className="min-h-dvh bg-offwhite lg:grid lg:grid-cols-[264px_1fr]">
       {/* Desktop sidebar */}
       <aside className="sticky top-0 hidden h-dvh bg-sidebar lg:block">
-        <SidebarContent role={role} />
+        <SidebarContent user={currentUser} onLogout={handleLogout} />
       </aside>
 
       {/* Mobile drawer */}
@@ -164,7 +210,7 @@ export function AdminShell({
           >
             <X className="size-5" aria-hidden="true" />
           </button>
-          <SidebarContent role={role} />
+          <SidebarContent user={currentUser} onLogout={handleLogout} />
         </div>
       </div>
 
@@ -203,9 +249,6 @@ export function AdminShell({
               <h1 className="truncate font-display text-lg font-bold text-navy">{title}</h1>
             </div>
 
-            <span className="hidden shrink-0 items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[11px] font-semibold text-[#8a6400] sm:inline-flex">
-              Demo / Synthetic Data
-            </span>
             {actions ? <div className="shrink-0">{actions}</div> : null}
           </div>
         </header>

@@ -1,11 +1,7 @@
-import { notFound } from 'next/navigation'
 import { AdminShell } from '@/components/admin/admin-shell'
 import { ApplicationDetail } from '@/components/admin/application-detail'
-import { demoApplications } from '@/content/admin'
 
-export function generateStaticParams() {
-  return demoApplications.map((a) => ({ id: a.id }))
-}
+export const dynamic = 'force-dynamic'
 
 export default async function AdminApplicationDetailPage({
   params,
@@ -13,19 +9,17 @@ export default async function AdminApplicationDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const application = demoApplications.find((a) => a.id === id)
-  if (!application) notFound()
 
   return (
     <AdminShell
-      title={`Application ${application.id}`}
+      title="Application Review"
       breadcrumbs={[
         { label: 'Admin', href: '/admin' },
         { label: 'Applications', href: '/admin/applications' },
-        { label: application.id },
+        { label: 'Review' },
       ]}
     >
-      <ApplicationDetail application={application} />
+      <ApplicationDetail id={id} />
     </AdminShell>
   )
 }
