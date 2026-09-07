@@ -82,7 +82,7 @@ export default function TatuValuesPage() {
             links={[
               { label: 'Ideology', description: 'Inclusive Social Democracy.', href: '/ideology' },
               { label: 'Vision, Mission & Values', description: 'Our direction.', href: '/vision-mission-values' },
-              { label: 'Manifesto', description: 'The draft policy framework.', href: '/manifesto' },
+              { label: 'Manifesto', description: 'The official policy framework.', href: '/manifesto' },
             ]}
           />
         </Container>

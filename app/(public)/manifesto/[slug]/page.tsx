@@ -4,8 +4,6 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { Breadcrumbs } from '@/components/editorial/breadcrumbs'
-import { ContentStatusBadge } from '@/components/editorial/content-status-badge'
-import { PendingNotice } from '@/components/editorial/pending-notice'
 import { ImagePlaceholder } from '@/components/editorial/image-placeholder'
 import {
   manifestoPillars,
@@ -26,7 +24,7 @@ export async function generateMetadata({
   const pillar = getPillar(slug)
   if (!pillar) return { title: 'Manifesto pillar not found' }
   return {
-    title: `${pillar.number} — ${pillar.title} (Draft)`,
+    title: `${pillar.number} — ${pillar.title} | ADEK Manifesto`,
     description: pillar.description,
   }
 }
@@ -61,8 +59,7 @@ export default async function ManifestoPillarPage({
               {pillar.number}
             </span>
             <div className="flex-1">
-              <ContentStatusBadge status="DRAFT" label="Draft — Pending Final Approval" />
-              <h1 className="mt-4 max-w-3xl text-balance text-3xl leading-[1.05] font-bold text-navy sm:text-4xl lg:text-5xl">
+              <h1 className="mt-1 max-w-3xl text-balance text-3xl leading-[1.05] font-bold text-navy sm:text-4xl lg:text-5xl">
                 {pillar.title}
               </h1>
             </div>
@@ -76,15 +73,6 @@ export default async function ManifestoPillarPage({
             <p className="text-xl leading-relaxed font-medium text-navy">
               {pillar.description}
             </p>
-
-            <div className="mt-10">
-              {/* Only the supplied description is used. No expanded policy copy. */}
-              <PendingNotice status="DRAFT" title="Detailed policy content pending final manifesto approval">
-                Expanded detail for this pillar will be published once the
-                manifesto is finalised and approved. The summary above is the
-                current supplied wording.
-              </PendingNotice>
-            </div>
           </div>
 
           <aside className="lg:pt-1">
@@ -95,7 +83,7 @@ export default async function ManifestoPillarPage({
             />
             <p className="mt-4 text-sm text-muted-foreground">
               Pillar {pillar.number} of {manifestoPillars.length} in the ADEK
-              draft policy framework.
+              policy framework.
             </p>
           </aside>
         </Container>

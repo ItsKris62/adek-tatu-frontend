@@ -7,11 +7,7 @@ export type ManifestoPillar = {
   description: string
 }
 
-/**
- * DRAFT manifesto — status must always be shown as DRAFT.
- * Use only the supplied title + description. Do NOT expand policy commitments.
- */
-export const manifestoStatus: ContentStatus = 'DRAFT'
+export const manifestoStatus: ContentStatus = 'APPROVED'
 
 export const manifestoPillars: ManifestoPillar[] = [
   {

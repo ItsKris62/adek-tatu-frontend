@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Container } from '@/components/layout/container'
 import { PageHero } from '@/components/layout/page-hero'
 import { ManifestoIndex } from '@/components/manifesto/manifesto-index'
-import { ContentStatusBadge } from '@/components/editorial/content-status-badge'
 import { JoinCTA } from '@/components/editorial/join-cta'
 import { manifestoPillars } from '@/content/manifesto'
 
@@ -20,11 +19,10 @@ export default function ManifestoPage() {
       <PageHero
         eyebrow="Policy"
         title="Party Manifesto & Policy Framework"
-        lead="Our draft priorities for Kenya, organised into ten policy pillars. You can download the complete document or browse each pillar below."
+        lead="Our priorities for Kenya, organised into ten policy pillars. You can download the complete document or browse each pillar below."
         breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Manifesto' }]}
       >
-        <div className="flex flex-wrap items-center gap-3">
-          <ContentStatusBadge status="APPROVED" label="Official Document" />
+        <div>
           <a
             href="/documents/Party%20Manifesto%20ADEK%20TATU.pdf"
             download="Party Manifesto ADEK TATU.pdf"

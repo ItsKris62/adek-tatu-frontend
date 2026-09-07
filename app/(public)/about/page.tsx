@@ -105,7 +105,7 @@ export default function AboutPage() {
         <Container>
           <RelatedLinks
             links={[
-              { label: 'Manifesto', description: 'The ten-pillar draft policy framework.', href: '/manifesto' },
+              { label: 'Manifesto', description: 'The ten-pillar policy framework.', href: '/manifesto' },
               { label: 'Leadership', description: 'The people leading ADEK.', href: '/leadership' },
               { label: 'Official Documents', description: 'Governing documents and materials.', href: '/documents' },
             ]}

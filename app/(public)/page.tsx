@@ -3,7 +3,6 @@ import { Container } from '@/components/layout/container'
 import { SectionHeader } from '@/components/editorial/section-header'
 import { CtaLink } from '@/components/editorial/cta'
 import { Reveal } from '@/components/editorial/reveal'
-import { ContentStatusBadge } from '@/components/editorial/content-status-badge'
 import { HomeHero } from '@/components/home/home-hero'
 import { TatuValues } from '@/components/tatu/tatu-values'
 import { ManifestoIndex } from '@/components/manifesto/manifesto-index'
@@ -91,10 +90,9 @@ export default function HomePage() {
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <SectionHeader
                 eyebrow="Policy"
-                title="Draft Policy Framework"
-                description="Ten pillars organising the party's draft priorities for Kenya."
+                title="Policy Framework"
+                description="Ten pillars organising the party's priorities for Kenya."
               />
-              <ContentStatusBadge status="DRAFT" label="Draft — Pending Final Approval" className="shrink-0" />
             </div>
           </Reveal>
           <Reveal delay={100} className="mt-12">

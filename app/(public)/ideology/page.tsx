@@ -73,7 +73,7 @@ export default function IdeologyPage() {
             links={[
               { label: 'Vision, Mission & Values', description: 'What guides our direction.', href: '/vision-mission-values' },
               { label: 'TATU Values', description: 'Teamwork, accountability, transparency, unity.', href: '/tatu-values' },
-              { label: 'Manifesto', description: 'The draft policy framework.', href: '/manifesto' },
+              { label: 'Manifesto', description: 'The official policy framework.', href: '/manifesto' },
             ]}
           />
         </Container>
