@@ -4,7 +4,6 @@ import { SectionHeader } from '@/components/editorial/section-header'
 import { CtaLink } from '@/components/editorial/cta'
 import { Reveal } from '@/components/editorial/reveal'
 import { ContentStatusBadge } from '@/components/editorial/content-status-badge'
-import { PendingNotice } from '@/components/editorial/pending-notice'
 import { HomeHero } from '@/components/home/home-hero'
 import { TatuValues } from '@/components/tatu/tatu-values'
 import { ManifestoIndex } from '@/components/manifesto/manifesto-index'
@@ -173,13 +172,6 @@ export default function HomePage() {
               <NewsCard />
               <NewsCard />
             </div>
-          </Reveal>
-          <Reveal delay={150} className="mt-10">
-            <PendingNotice title="News content pending client input" className="max-w-2xl">
-              No articles have been supplied yet. This section shows the future
-              structure of the ADEK newsroom without any placeholder headlines or
-              dates.
-            </PendingNotice>
           </Reveal>
         </Container>
       </section>
