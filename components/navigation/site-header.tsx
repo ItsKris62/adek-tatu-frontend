@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
-import { Menu, X, Phone } from 'lucide-react'
+import { Menu, X, Phone, Lock } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Container } from '@/components/layout/container'
 import { BrandMark } from '@/components/layout/brand-mark'
@@ -67,7 +67,7 @@ export function SiteHeader() {
             />
             Official Website of ADEK
           </p>
-          <nav aria-label="Utility">
+          <nav aria-label="Utility" className="flex items-center gap-5">
             <ul className="flex items-center gap-6">
               {utilityNav.map((link) => (
                 <li key={link.href}>
@@ -80,6 +80,14 @@ export function SiteHeader() {
                 </li>
               ))}
             </ul>
+            <span aria-hidden="true" className="h-3 w-px bg-white/20" />
+            <Link
+              href="/admin/login"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2.5 py-0.5 text-[11.5px] font-medium text-white transition-all duration-200 hover:border-gold hover:bg-gold hover:text-navy focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+            >
+              <Lock className="size-3 text-gold transition-colors group-hover:text-navy" aria-hidden="true" />
+              <span>Admin Portal</span>
+            </Link>
           </nav>
         </Container>
       </div>
@@ -241,6 +249,13 @@ export function SiteHeader() {
             <CtaLink href="/join" variant="primary" size="lg" className="w-full">
               Join ADEK
             </CtaLink>
+            <Link
+              href="/admin/login"
+              className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-lg border border-border bg-muted/60 py-2.5 text-xs font-semibold text-navy transition-colors hover:bg-muted hover:text-navy"
+            >
+              <Lock className="size-3.5 text-adek-blue" aria-hidden="true" />
+              <span>Staff & Admin Login</span>
+            </Link>
             <a
               href={`tel:${site.contact.phones[0].replace(/\s/g, '')}`}
               className="mt-3 flex items-center justify-center gap-2 text-sm text-muted-foreground transition-colors hover:text-navy"

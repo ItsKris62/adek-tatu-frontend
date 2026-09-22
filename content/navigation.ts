@@ -49,6 +49,7 @@ export const footerGroups: { title: string; links: NavLink[] }[] = [
       { label: 'Privacy', href: '/privacy' },
       { label: 'Complaints', href: '/complaints' },
       { label: 'Accessibility', href: '/accessibility' },
+      { label: 'Admin Portal', href: '/admin/login' },
     ],
   },
 ]
@@ -72,4 +73,5 @@ export const mobileSecondaryNav: NavLink[] = [
   { label: 'Privacy', href: '/privacy' },
   { label: 'Complaints', href: '/complaints' },
   { label: 'Accessibility', href: '/accessibility' },
+  { label: 'Admin Portal', href: '/admin/login' },
 ]

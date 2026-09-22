@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Phone, MapPin } from 'lucide-react'
+import { Phone, MapPin, Lock } from 'lucide-react'
 import { Container } from '@/components/layout/container'
 import { footerGroups } from '@/content/navigation'
 import { site } from '@/content/site'
@@ -79,15 +79,23 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
             &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p className="max-w-md text-white/45">
-            {/* Content governance: some material is pending official approval. */}
-            Some content on this website is a draft or is pending official
-            approval and is clearly labelled as such.
-          </p>
+          <div className="flex flex-wrap items-center gap-4">
+            <Link
+              href="/admin/login"
+              className="inline-flex items-center gap-1.5 rounded border border-white/15 bg-white/5 px-2.5 py-1 text-xs text-white/75 transition-all duration-200 hover:border-gold/60 hover:bg-gold/10 hover:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+            >
+              <Lock className="size-3 text-gold" aria-hidden="true" />
+              <span>Staff & Admin Portal</span>
+            </Link>
+            <p className="max-w-md text-white/45">
+              Some content on this website is a draft or is pending official
+              approval and is clearly labelled as such.
+            </p>
+          </div>
         </div>
       </Container>
     </footer>
