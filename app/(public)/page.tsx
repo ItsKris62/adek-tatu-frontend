@@ -24,31 +24,24 @@ export default function HomePage() {
       <HomeHero />
 
       {/* ADEK Introduction — Inclusive Social Democracy */}
-      <section className="py-20 lg:py-28">
-        <Container className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+      <section className="bg-offwhite py-20 lg:py-28">
+        <Container className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <Reveal>
-            <SectionHeader eyebrow="Our Ideology" title={ideology.name} />
+            <div className="border-l-2 border-gold pl-5">
+              <p className="text-[11px] font-semibold tracking-[0.2em] text-adek-blue-600 uppercase">02 / Our ideology</p>
+              <h2 className="mt-5 max-w-sm font-display text-4xl leading-[1.05] font-extrabold tracking-[-0.04em] text-navy sm:text-5xl">{ideology.name}</h2>
+            </div>
           </Reveal>
-          <Reveal delay={100} className="max-w-[68ch]">
-            <p className="text-pretty text-xl leading-relaxed font-medium text-navy sm:text-2xl">
-              {ideology.lead}
-            </p>
-            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
-              {ideology.paragraphs.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
-            <div className="mt-8">
-              <CtaLink href="/about" variant="blue" withArrow>
-                Learn About ADEK
-              </CtaLink>
-            </div>
+          <Reveal delay={100} className="max-w-[68ch] lg:pt-8">
+            <p className="text-pretty text-xl leading-relaxed font-medium text-navy sm:text-2xl">{ideology.lead}</p>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">{ideology.paragraphs.map((p, i) => <p key={i}>{p}</p>)}</div>
+            <div className="mt-8"><CtaLink href="/about" variant="blue" withArrow>Learn About ADEK</CtaLink></div>
           </Reveal>
         </Container>
       </section>
 
       {/* TATU signature */}
-      <section className="border-y border-border bg-offwhite py-20 lg:py-28">
+      <section className="border-y border-navy/10 bg-white py-20 lg:py-28">
         <Container className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <Reveal>
             <SectionHeader
