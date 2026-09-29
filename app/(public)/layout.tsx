@@ -11,9 +11,11 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
       >
         Skip to content
       </a>
-      <SiteHeader />
-      <main id="main">{children}</main>
-      <SiteFooter />
+      <div className="public-shell">
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+      </div>
     </>
   )
 }
