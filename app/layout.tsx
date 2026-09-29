@@ -26,21 +26,14 @@ export const metadata: Metadata = {
   applicationName: 'ADEK TATU',
   icons: {
     icon: [
-      { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/adek-logo.png', sizes: '1024x1024', type: 'image/png' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
     shortcut: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/adek-logo.png', type: 'image/png' },
     ],
     apple: [
-      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'alternate icon',
-        url: '/icon-light-32x32.png',
-        type: 'image/png',
-      },
+      { url: '/adek-logo.png', sizes: '1024x1024', type: 'image/png' },
     ],
   },
   appleWebApp: {

@@ -22,7 +22,7 @@ export function PageHero({
         className="parallax-backdrop pointer-events-none absolute inset-0 -z-10 bg-[url('/images/nairobi-skyline.png')] bg-cover bg-[center_38%] opacity-[0.13] mix-blend-multiply"
       />
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-offwhite via-offwhite/90 to-offwhite/60" />
-      {/* Subtle emblem-inspired arc geometry */
+      {/* Subtle emblem-inspired arc geometry */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-40 -right-40 size-[520px] rounded-full border border-gold/15"
