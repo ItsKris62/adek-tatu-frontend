@@ -28,6 +28,27 @@ export type ApplicationStatusResponse = {
   updatedAt: string
 }
 
+export type MembershipVerificationRequest = {
+  fullName: string
+  phone: string
+  idNumber: string
+  website?: string
+}
+
+export type MembershipVerificationResponse =
+  | {
+      isMember: true
+      member: {
+        fullName: string
+        membershipNumber: string
+        dateJoined: string
+        status: 'APPROVED'
+      }
+    }
+  | {
+      isMember: false
+    }
+
 export async function submitMembershipApplication(
   data: MembershipFormData
 ): Promise<MembershipSubmissionResponse> {
@@ -43,4 +64,13 @@ export async function getApplicationStatus(
   return await fetchApi<ApplicationStatusResponse>(
     `/api/v1/membership/applications/${encodeURIComponent(reference)}/status`
   )
+}
+
+export async function verifyMembershipStatus(
+  data: MembershipVerificationRequest
+): Promise<MembershipVerificationResponse> {
+  return await fetchApi<MembershipVerificationResponse>('/api/v1/membership/verify', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  })
 }

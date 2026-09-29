@@ -4,6 +4,7 @@ import { ArrowUpRight, ClipboardList, ListChecks, ShieldCheck, UserPlus } from '
 import { Container } from '@/components/layout/container'
 import { PageHero } from '@/components/layout/page-hero'
 import { CtaLink } from '@/components/editorial/cta'
+import { MemberStatusDialog } from '@/components/membership/member-status-dialog'
 
 export const metadata: Metadata = {
   title: 'Join ADEK',
@@ -51,9 +52,7 @@ export default function JoinPage() {
           <CtaLink href="/join/application" variant="primary" size="lg">
             Start Application
           </CtaLink>
-          <CtaLink href="/join/eligibility" variant="outline" size="lg" withArrow>
-            Learn About Membership
-          </CtaLink>
+          <MemberStatusDialog />
         </div>
       </PageHero>
 

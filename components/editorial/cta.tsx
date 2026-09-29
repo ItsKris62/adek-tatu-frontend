@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 import type { ComponentProps, ReactNode } from 'react'
 
 type Variant = 'primary' | 'blue' | 'gold' | 'outline' | 'ghost'
-type Size = 'md' | 'lg'
+type Size = 'sm' | 'md' | 'lg'
 
 const base =
   'group/cta inline-flex items-center justify-center gap-2 rounded-[10px] font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-adek-blue focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-y-0'
@@ -24,6 +24,7 @@ const variants: Record<Variant, string> = {
 }
 
 const sizes: Record<Size, string> = {
+  sm: 'h-9 px-3 text-xs',
   md: 'h-11 px-5 text-sm',
   lg: 'h-12 px-6 text-[15px]',
 }
