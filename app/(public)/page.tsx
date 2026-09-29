@@ -4,6 +4,7 @@ import { SectionHeader } from '@/components/editorial/section-header'
 import { CtaLink } from '@/components/editorial/cta'
 import { Reveal } from '@/components/editorial/reveal'
 import { HomeHero } from '@/components/home/home-hero'
+import { KenyaScrollMap } from '@/components/home/kenya-scroll-map'
 import { TatuValues } from '@/components/tatu/tatu-values'
 import { ManifestoIndex } from '@/components/manifesto/manifesto-index'
 import { DocumentLibrary } from '@/components/documents/document-library'
@@ -20,7 +21,9 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <>
+    <div className="home-map-stage">
+      <KenyaScrollMap />
+      <>
       <HomeHero />
 
       {/* ADEK Introduction — Inclusive Social Democracy */}
@@ -166,6 +169,7 @@ export default function HomePage() {
           </Reveal>
         </Container>
       </section>
-    </>
+      </>
+    </div>
   )
 }

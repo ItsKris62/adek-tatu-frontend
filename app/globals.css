@@ -159,7 +159,74 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .parallax-backdrop {
+.home-map-stage {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+}
+
+.kenya-map-backdrop {
+  position: absolute;
+  z-index: -1;
+  top: clamp(30rem, 48vw, 52rem);
+  right: clamp(-9rem, 5vw, 3rem);
+  width: min(48vw, 38rem);
+  pointer-events: none;
+  color: var(--adek-blue-600);
+  opacity: 0.14;
+  transform: rotate(7deg);
+}
+
+.kenya-map-backdrop svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.kenya-map-outline,
+.kenya-map-divisions path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.kenya-map-outline {
+  stroke-width: 2.2;
+  stroke-dasharray: 1;
+  transition: stroke-dashoffset 160ms linear;
+}
+
+.kenya-map-divisions {
+  transform-origin: center;
+  transition: opacity 220ms ease-out;
+}
+
+.kenya-map-divisions path {
+  stroke-width: 1.1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+@media (max-width: 640px) {
+  .kenya-map-backdrop {
+    top: 38rem;
+    right: -8rem;
+    width: 30rem;
+    opacity: 0.08;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kenya-map-outline,
+  .kenya-map-divisions {
+    transition: none;
+  }
+}
+
+.parallax-backdrop {
+
     animation: backdrop-drift 18s ease-in-out infinite alternate;
   }
 }
